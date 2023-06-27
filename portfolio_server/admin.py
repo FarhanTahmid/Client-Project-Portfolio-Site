@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserInformations,WavingLines,UserEducation
+from .models import SocialUrls,UserInformations,WavingLines,UserEducation
 
 # Register your models here.
 
@@ -19,4 +19,10 @@ class UserInformation(admin.ModelAdmin):
 class UserEducation(admin.ModelAdmin):
     list_display=[
         'pk','user','degree_name','duration'
+    ]
+
+@admin.register(SocialUrls)
+class SocialUrls(admin.ModelAdmin):
+    list_display=[
+        'pk','facebook_link','linkedin_link'
     ]

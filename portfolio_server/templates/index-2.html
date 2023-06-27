@@ -41,7 +41,16 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar-nav" data-offset="110">
-
+    <style>
+        .social_icons {
+            text-align: center;
+        }
+        
+        .social_icons li {
+            display: inline-block;
+            margin-right: 2px;
+        }
+    </style>
 <!-- LOADER -->
 <div class="preloader">
     <div class="loader">
@@ -106,11 +115,9 @@
                     </li>
                 </ul>
                 <ul class="list_none social_icons">
-                    <li><a href="#" class="sc_facebook"><i class="ion-social-facebook"></i></a></li>
-                    <li><a href="#" class="sc_twitter"><i class="ion-social-twitter"></i></a></li>
-                    <li><a href="#" class="sc_google"><i class="ion-social-googleplus"></i></a></li>
-                    <li><a href="#" class="sc_youtube"><i class="ion-social-youtube-outline"></i></a></li>
-                    <li><a href="#" class="sc_instagram"><i class="ion-social-instagram-outline"></i></a></li>
+                    <li><a href={{links.facebook_link}}><img src="https://www.facebook.com/favicon.ico" alt="Facebook" width="16" height="16"></a></li>
+                    <li><a href="{{links.linkedin_link}}"><img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" width="16" height="16"></a></li>
+                    <li><a href="{{links.google_scholar_link}}"><img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" width="16" height="16"></a></li>
                 </ul>
             </div>
         </div>
@@ -150,11 +157,9 @@
     </div>
     <div class="social_banner social_vertical">
     	<ul class="list_none social_icons text-center">
-            <li><a href="#" class="sc_facebook"><i class="ion-social-facebook"></i></a></li>
-            <li><a href="#" class="sc_twitter"><i class="ion-social-twitter"></i></a></li>
-            <li><a href="#" class="sc_google"><i class="ion-social-googleplus"></i></a></li>
-            <li><a href="#" class="sc_youtube"><i class="ion-social-youtube-outline"></i></a></li>
-            <li><a href="#" class="sc_instagram"><i class="ion-social-instagram-outline"></i></a></li>
+            <li><a href="{{links.facebook_link}}"><img src="https://www.facebook.com/favicon.ico" alt="Facebook" width="16" height="16"></a></li>
+            <li><a href="{{links.linkedin_link}}"><img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" width="16" height="16"></a></li>
+            <li><a href="{{links.google_scholar_link}}"><img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" width="16" height="16"></a></li>
         </ul>
     </div>
 </section>

@@ -46,10 +46,21 @@ class UserEducation(models.Model):
         return reverse("education", kwargs={"degree_name": self.degree_name})
 
 
+class SocialUrls(models.Model):
+    user=models.ForeignKey(UserInformations,on_delete=models.CASCADE,null=False)
+    facebook_link=models.CharField(null=True,blank=True,max_length=200)
+    linkedin_link=models.CharField(null=True,blank=True,max_length=200)
+    google_scholar_link=models.CharField(null=True,blank=True,max_length=200)
+    
+    class Meta:
+        verbose_name="User Socials Urls"
 
-
-
-
+    def __str__(self) -> str:
+        return str(self.pk)
+    
+    def get_absolute_url(self):
+        return reverse("social_url", kwargs={"pk": self.pk})
+    
 
 
 class WavingLines(models.Model):
