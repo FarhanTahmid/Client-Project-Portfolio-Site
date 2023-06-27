@@ -9,7 +9,7 @@ def portfolio_page(request):
     user=UserInformations.objects.get()
     user_id=user.pk
     wavingTags=WavingLines.objects.filter(user=UserInformations.objects.get(pk=user_id)).values('line')
-    education_details=UserEducation.objects.filter(user=UserInformations.objects.get(pk=user_id)).values()
+    education_details=UserEducation.objects.filter(user=UserInformations.objects.get(pk=user_id)).values().order_by('-weight')
     media_url=settings.MEDIA_URL
     context={
         'user':user,

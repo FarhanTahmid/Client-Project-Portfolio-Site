@@ -33,8 +33,10 @@ class UserEducation(models.Model):
     degree_name=models.CharField(null=False,blank=False,max_length=200)
     duration=models.CharField(null=False,blank=False,max_length=50)
     institutions=models.CharField(null=True,blank=True,max_length=200)
-    description=models.TextField(null=True,blank=True,max_length=1500)
-    
+    description=models.TextField(null=True,blank=True,max_length=1000)
+    project=models.TextField(null=True,blank=True,max_length=1000)
+    specific_degree=models.CharField(null=True,blank=True,max_length=120)
+    weight=models.IntegerField(null=False,blank=False,default=1)
     class Meta:
         verbose_name="User Education Details"
         
