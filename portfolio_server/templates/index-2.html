@@ -87,35 +87,21 @@
                 <li>
                     <a class="nav-link page-scroll" href="#contact">contact</a>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu dropdown-reverse">
-                        <ul> 
-                            <li><a class="dropdown-item nav-link nav_item" href="portfolio-detail-dark.html">portfolio detail dark</a></li>
-                            <li><a class="dropdown-item nav-link nav_item" href="portfolio-detail-sidemenu-dark.html">portfolio detail sidemenu dark</a></li>
-                            <li><a class="dropdown-item nav-link nav_item" href="portfolio-detail-sidemenu-white.html">portfolio detail sidemenu white</a></li>
-                            <li><a class="dropdown-item nav-link nav_item" href="portfolio-detail-white.html">portfolio detail white</a></li>
-                            <li><a class="dropdown-item nav-link nav_item" href="blog-detail-dark.html">blog detail dark</a></li>
-                            <li><a class="dropdown-item nav-link nav_item" href="blog-detail-sidemenu-dark.html">blog detail sidemenu dark</a></li>
-                            <li><a class="dropdown-item nav-link nav_item" href="blog-detail-sidemenu-white.html">blog detail sidemenu white</a></li>
-                            <li><a class="dropdown-item nav-link nav_item" href="blog-detail-white.html">blog detail white</a></li>
-                        </ul>
-                    </div>
-                </li>
+                
             </ul>
             <div class="bottom_content">
                 <ul class="contact_info list_none">
                     <li>
                         <span class="ti-mobile"></span>
-                        <p>+ 457 789 789 65</p>
+                        <p>{{user.phone}}</p>
                     </li>
                     <li>
                         <span class="ti-email"></span>
-                        <a href="mailto:info@sitename.com">info@sitename.com</a>
+                        <a href="{{user.email}}">info@sitename.com</a>
                     </li>
                     <li>
                         <span class="ti-location-pin"></span>
-                        <address>123 Street, Old Trafford, New South London , UK</address>
+                        <address>{{user.address}}</address>
                     </li>
                 </ul>
                 <ul class="list_none social_icons">
@@ -141,18 +127,21 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-xl-6 col-md-7">
                     <div class="banner_content banner_center_content">
-                        <h2 class="animation" data-animation="fadeInUp" data-animation-delay="0.02s">Hello, I'm Martyn Vorm</h2>
+                        <h2 class="animation" data-animation="fadeInUp" data-animation-delay="0.02s"><br>{{user.first_name}} {{user.middle_name}} {{user.last_name}}</h2>
                         <div id="typed-strings" class="d-none">
-                            <b>UI/UX Designer</b> <b>Web Developer</b>
+                            {% for tag in wavingTags %}
+                                <b>{{tag.line}}</b>
+                            {% endfor %}
+                            
                         </div>
-                        <h4 class="animation" data-animation="fadeInUp" data-animation-delay="0.03s">I'm a Freelance <span id="typed-text" class="text_default"></span></h4>
-                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.04s">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                        <h4 class="animation" data-animation="fadeInUp" data-animation-delay="0.03s">I'm a <span id="typed-text" class="text_default"></span></h4>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.04s">{{user.interest}}</p>
                         <a href="#" class="btn btn-default rounded-0 btn-aylen animation" data-animation="fadeInUp" data-animation-delay="0.5s">Download CV</a>
                     </div>
                 </div>
                 <div class="col-xl-5 col-md-5">
                 	<div class="banner_img animation" data-animation="fadeInUp" data-animation-delay="0.02s">
-                    	<img src="{% static 'assets/images/my_image.png'%}" alt="my_image"/>
+                    	<img src="{{media_url}}{{user.banner_picture}}" alt="my_image"/>
                     </div>
                 </div>
             </div>
@@ -176,7 +165,7 @@
         <div class="row">
                 <div class="col-md-4">
                 	<div class="about_img animation" data-animation="fadeInUp" data-animation-delay="0.02s">
-                    	<img src="assets/images/about_img.png" alt="about_img"/>
+                    	<img src="{{media_url}}{{user.user_picture}}" alt="about_img"/>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -184,36 +173,27 @@
                         <div class="heading_s1 mb-3"> 
                           <h2>About Me</h2>
                         </div>
-                        <p>Nam eget neque pellentesque efficitur neque at, ornare orci. Vestibulum ligula orci volutpat id aliquet eget, consectetur eget ante. Duis pharetra for nec rhoncus felis sagittis nec amet ultricies lorem.</p>
-                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.Iipsum dolor sit amet consectetur adipiscing elitllus blandit massa enim.</p>
+                        <p>{{user.about_info}}</p>
                         <hr>
                         <div class="heading_s1 mb-4"> 
                             <h5>Basic Info</h5>
                         </div>
                         <ul class="profile_info list_none">
                             <li>
-                                <span class="title">Date of birth:</span>
-                                <p>20 August 1990</p>
+                                <span class="title">Age:</span>
+                                <p>{{user.age}}</p>
                             </li>
                             <li>
                                 <span class="title">Phone No:</span>
-                                <p>+ (123) 1512-578</p>
+                                <p>{{user.phone}}</p>
                             </li>
                             <li>
                                 <span class="title">Email:</span>
-                                <a href="mailto:info@sitename.com">mymail@gmail.com</a>
+                                <a href="mailto:{{user.email}}">{{user.email}}</a>
                             </li>
                             <li>
                                 <span class="title">Address:</span>
-                                <p> 123 Street, Old Trafford, London </p>
-                            </li>
-                            <li>
-                                <span class="title">Website:</span>
-                                <p> www.mywebsite.com </p>
-                            </li>
-                            <li>
-                                <span class="title">Freelance:</span>
-                                <p>Available</p>
+                                <p> {{user.address}} </p>
                             </li>
                         </ul>
                     </div>
