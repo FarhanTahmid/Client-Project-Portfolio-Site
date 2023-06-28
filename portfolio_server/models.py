@@ -107,6 +107,9 @@ class UserPublications(models.Model):
     publication_in=models.CharField(null=False,max_length=200)
     publishers_name=models.CharField(null=True,max_length=500)
     citation_link=models.CharField(null=True,max_length=200)
+    picture=models.ImageField(null=True,default='user_publications/default.png',upload_to='user_publications/')
+    publication_year=models.IntegerField(null=True,blank=True)
+    weight=models.IntegerField(null=False,blank=False,default=1)
     
     class Meta:
         verbose_name="User Publication"

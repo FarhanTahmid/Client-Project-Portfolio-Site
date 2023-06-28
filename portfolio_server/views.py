@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import UserResearchExperience,UserSkills,SocialUrls,WavingLines,UserEducation,UserInformations
+from . models import UserPublications,PublicationType,UserResearchExperience,UserSkills,SocialUrls,WavingLines,UserEducation,UserInformations
 from django.conf import settings
 
 # Create your views here.
@@ -18,7 +18,11 @@ def portfolio_page(request):
 
     research_experience=UserResearchExperience.objects.filter(user=UserInformations.objects.get(pk=user_id)).values().order_by('-research_weight')
 
-    
+    international_publications=UserPublications.objects.filter(user=UserInformations.objects.get(pk=user_id),publication_type=PublicationType.objects.get(publication_type='International Conference')).values().order_by('-publication_year','-weight')
+    national_publications=UserPublications.objects.filter(user=UserInformations.objects.get(pk=user_id),publication_type=PublicationType.objects.get(publication_type='National Conference')).values().order_by('-publication_year','-weight')
+    journal_publications=UserPublications.objects.filter(user=UserInformations.objects.get(pk=user_id),publication_type=PublicationType.objects.get(publication_type='Journal')).values().order_by('-publication_year','-weight')
+
+   
     context={
         'user':user,
         'wavingTags':wavingTags,
@@ -27,6 +31,10 @@ def portfolio_page(request):
         'links':social_links,
         'skills':user_skills,
         'research_exp':research_experience,
+        'international_publications':international_publications,
+        'national_publications':national_publications,
+        'journal_publications':journal_publications,
+        
         
     }
     return render(request,'index-2.html',context=context)
