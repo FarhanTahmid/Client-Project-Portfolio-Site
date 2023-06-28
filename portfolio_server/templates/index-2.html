@@ -85,10 +85,10 @@
                     <a class="nav-link page-scroll" href="#education">Education</a>
                 </li>
                 <li>
-                    <a class="nav-link page-scroll" href="#skills">Skills</a>
+                    <a class="nav-link page-scroll" href="#skills">Technical Skills</a>
                 </li>
                 <li>
-                    <a class="nav-link page-scroll" href="#portfolio">Portfolio</a>
+                    <a class="nav-link page-scroll" href="#research_experience">Research Experience</a>
                 </li>
                 
                 <li>
@@ -209,7 +209,7 @@
 </section>
 <!-- END SECTION ABOUT US -->
 
-<!-- START WORK EXPERIENCES -->
+<!-- START Education -->
 <section id="education">
 	<div class="container">
     	<div class="row justify-content-center">
@@ -238,15 +238,15 @@
         </div>
     </div>
 </section>
-<!-- END WORK EXPERIENCES -->
+<!-- END Education -->
 
-<!-- START SECTION SERVICES -->
+<!-- START SECTION Skills -->
 <section id="skills" class="bg_gray">
 	<div class="container">
     	<div class="row justify-content-center">
         	<div class="col-xl-6 col-lg-7 col-md-9 text-center">
             	<div class="heading_s1 animation text-center" data-animation="fadeInUp" data-animation-delay="0.02s">
-                	<h2>Skills</h2>
+                	<h2>Technical Skills</h2>
                 </div>
             </div>
         </div>
@@ -268,7 +268,39 @@
         </div>
     </div>
 </section>
-<!-- END SECTION SERVICES -->
+<!-- END SECTION Skills -->
+
+<!--Start Research Experience-->
+<section id="research_experience">
+	<div class="container">
+    	<div class="row justify-content-center">
+        	<div class="col-xl-6 col-lg-7 col-md-9 text-center">
+            	<div class="heading_s1 animation" data-animation="fadeInUp" data-animation-delay="0.02s">
+                	<h2>Research Experience</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row animation" data-animation="fadeInUp" data-animation-delay="0.04s">
+            {% for research in research_exp %}
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box icon_box_style_2">
+                    <div class="icon_box_content">
+                        <h4>{{research.research_project}}</h4>
+                        <p>{{research.research_institute}}</p>
+                        <hr>
+                        <p><b>Description:</b> {{research.project_description}}</p>
+                        <p><b>Outcome:</b> {{research.project_outcome}}</p>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+
 
 <!-- START SECTION PORTFOLIO -->
 <section id="portfolio" class="pb_70">

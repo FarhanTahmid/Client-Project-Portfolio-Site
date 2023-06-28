@@ -76,8 +76,24 @@ class UserSkills(models.Model):
     def get_absolute_url(self):
         return reverse("skills", kwargs={"pk": self.pk})
     
+class UserResearchExperience(models.Model):
+    user=models.ForeignKey(UserInformations,on_delete=models.CASCADE,null=False)
+    research_institute=models.CharField(null=False,blank=False,max_length=150)
+    research_project=models.CharField(null=True,blank=True,max_length=200)
+    project_description=models.TextField(null=True,blank=True,max_length=500)
+    project_outcome=models.CharField(null=True,max_length=200)
+    research_weight=models.TextField(null=False,blank=False,default=1)
     
+    class Meta:
+        verbose_name="User Research Experience"
+        
+    def __str__(self):
+        return str(self.pk)
+    def get_absolute_url(self):
+        return reverse("research_experience", kwargs={"pk": self.pk})
 
+        
+        
 class WavingLines(models.Model):
     user=models.ForeignKey(UserInformations,on_delete=models.CASCADE)
     line=models.CharField(null=False,blank=False,max_length=100)

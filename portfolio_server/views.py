@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import UserSkills,SocialUrls,WavingLines,UserEducation,UserInformations
+from . models import UserResearchExperience,UserSkills,SocialUrls,WavingLines,UserEducation,UserInformations
 from django.conf import settings
 
 # Create your views here.
@@ -14,8 +14,11 @@ def portfolio_page(request):
     media_url=settings.MEDIA_URL
     social_links=social_links[0] #getting the first object only
         
-    user_skills=UserSkills.objects.filter(user=UserInformations.objects.get(pk=user_id)).values()
+    user_skills=UserSkills.objects.filter(user=UserInformations.objects.get(pk=user_id)).values().order_by('-skill_weight')
 
+    research_experience=UserResearchExperience.objects.filter(user=UserInformations.objects.get(pk=user_id)).values().order_by('-research_weight')
+
+    
     context={
         'user':user,
         'wavingTags':wavingTags,
@@ -23,6 +26,7 @@ def portfolio_page(request):
         'media_url':media_url,
         'links':social_links,
         'skills':user_skills,
+        'research_exp':research_experience,
         
     }
     return render(request,'index-2.html',context=context)
