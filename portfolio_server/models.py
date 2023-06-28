@@ -117,7 +117,18 @@ class UserPublications(models.Model):
         return str(self.pk)
     def get_absolute_url(self):
         return reverse("publications", kwargs={"pk": self.pk})
+
+class UserDistinctions(models.Model):
+    user=models.ForeignKey(UserInformations,on_delete=models.CASCADE,null=False)
+    distinction_title=models.CharField(null=False,blank=False,max_length=150)
+    distinction_description=models.CharField(null=True,blank=True,max_length=300)
     
+    class Meta:
+        verbose_name="User Distinction"
+    def __str__(self):
+        return str(self.pk)
+    def get_absolute_url(self):
+        return reverse("distinction", kwargs={"pk": self.pk})    
         
 class WavingLines(models.Model):
     user=models.ForeignKey(UserInformations,on_delete=models.CASCADE)

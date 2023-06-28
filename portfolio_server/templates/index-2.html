@@ -95,6 +95,9 @@
                     <a class="nav-link page-scroll" href="#publications">Publications</a>
                 </li>
                 <li>
+                    <a class="nav-link page-scroll" href="#distinctions">Distinctions</a>
+                </li>
+                <li>
                     <a class="nav-link page-scroll" href="#contact">contact</a>
                 </li>
                 
@@ -409,29 +412,29 @@
             <div class="col-lg-3 col-md-3 col-6">
                 <div class="box_counter counter_dark text-center animation" data-animation="fadeInUp" data-animation-delay="0.02s">
                     <i class="flaticon-briefing"></i>
-                    <h3 class="counter_text"><span class="counter">800</span>+</h3>
-                    <p>Projects Completed</p>
+                    <h3 class="counter_text"><span class="counter">{{total_pub_count}}</span>+</h3>
+                    <p>Total Publications</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6">
                 <div class="box_counter counter_dark text-center animation" data-animation="fadeInUp" data-animation-delay="0.03s">
-                    <i class="flaticon-laugh"></i>
-                    <h3 class="counter_text"><span class="counter">524</span></h3>
-                    <p>Happy Clients</p>
+                    <i class="flaticon-briefing"></i>
+                    <h3 class="counter_text"><span class="counter">{{journal_pub_count}}</span></h3>
+                    <p>Total Journals</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6">
                 <div class="box_counter counter_dark text-center animation" data-animation="fadeInUp" data-animation-delay="0.04s">
-                    <i class="flaticon-coffee-cup"></i>
-                    <h3 class="counter_text"><span class="counter">654</span></h3>
-                    <p>Cup Of Tea</p>
+                    <i class="flaticon-briefing"></i>
+                    <h3 class="counter_text"><span class="counter">{{inter_pub_count}}</span></h3>
+                    <p>International Conferences</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6">
                 <div class="box_counter counter_dark text-center animation" data-animation="fadeInUp" data-animation-delay="0.05s">
-                    <i class="flaticon-trophy"></i>
-                    <h3 class="counter_text"><span class="counter">225</span></h3>
-                    <p>Awards Won</p>
+                    <i class="flaticon-briefing"></i>
+                    <h3 class="counter_text"><span class="counter">{{national_pub_count}}</span></h3>
+                    <p>National Conferences</p>
                 </div>
             </div>
         </div>
@@ -439,7 +442,32 @@
 </section>
 <!-- END SECTION COUNTER -->
 
-
+<!-- START SECTION Distinctions -->
+<section id="distinctions" class="bg_gray">
+	<div class="container">
+    	<div class="row justify-content-center">
+        	<div class="col-xl-6 col-lg-7 col-md-9 text-center">
+            	<div class="heading_s1 animation text-center" data-animation="fadeInUp" data-animation-delay="0.02s">
+                	<h2>Distinctions</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row animation" data-animation="fadeInUp" data-animation-delay="0.04s">
+        	{% for distinction in distinctions %}
+            <div class="col-lg-4 col-sm-6 text-center">
+                <div class="icon_box icon_box_style_1">
+                    
+                    <div class="icon_box_content">
+                        <h5>{{distinction.distinction_title}}</h5>
+                        <p>{{distinction.distinction_description}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- END SECTION Skills -->
 
 <!-- START SECTION TESTIMONIAL -->
 <section class="bg_gray">	
