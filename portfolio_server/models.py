@@ -20,7 +20,7 @@ class UserInformations(models.Model):
     
     
     class Meta:
-        verbose_name = "User Details"
+        verbose_name = "User Detail"
 
     def __str__(self):
         return self.first_name
@@ -38,7 +38,7 @@ class UserEducation(models.Model):
     specific_degree=models.CharField(null=True,blank=True,max_length=120)
     weight=models.IntegerField(null=False,blank=False,default=1)
     class Meta:
-        verbose_name="User Education Details"
+        verbose_name="User Education Detail"
         
     def __str__(self) -> str:
         return str(self.pk)
@@ -53,7 +53,7 @@ class SocialUrls(models.Model):
     google_scholar_link=models.CharField(null=True,blank=True,max_length=200)
     
     class Meta:
-        verbose_name="User Socials Urls"
+        verbose_name="User Socials Url"
 
     def __str__(self) -> str:
         return str(self.pk)
@@ -61,14 +61,29 @@ class SocialUrls(models.Model):
     def get_absolute_url(self):
         return reverse("social_url", kwargs={"pk": self.pk})
     
-
+class UserSkills(models.Model):
+    user=models.ForeignKey(UserInformations,on_delete=models.CASCADE,null=False)
+    skill_icon_picture=models.ImageField(null=True,upload_to='skill_icons/')
+    skill_name=models.CharField(null=False,blank=False,max_length=100)
+    skill_description=models.TextField(null=True,blank=True,max_length=500)
+    skill_weight=models.IntegerField(null=False,blank=False,default=1)
+    
+    class Meta:
+        verbose_name="User Skill"
+        
+    def __str__(self) -> str:
+        return str(self.pk)
+    def get_absolute_url(self):
+        return reverse("skills", kwargs={"pk": self.pk})
+    
+    
 
 class WavingLines(models.Model):
     user=models.ForeignKey(UserInformations,on_delete=models.CASCADE)
     line=models.CharField(null=False,blank=False,max_length=100)
     
     class Meta:
-        verbose_name="Tag Lines"
+        verbose_name="Tag Line"
         
     def __str__(self):
         return self.line

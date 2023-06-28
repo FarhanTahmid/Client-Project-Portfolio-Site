@@ -85,7 +85,7 @@
                     <a class="nav-link page-scroll" href="#education">Education</a>
                 </li>
                 <li>
-                    <a class="nav-link page-scroll" href="#services">Services</a>
+                    <a class="nav-link page-scroll" href="#skills">Skills</a>
                 </li>
                 <li>
                     <a class="nav-link page-scroll" href="#portfolio">Portfolio</a>
@@ -241,83 +241,30 @@
 <!-- END WORK EXPERIENCES -->
 
 <!-- START SECTION SERVICES -->
-<section id="services" class="bg_gray">
+<section id="skills" class="bg_gray">
 	<div class="container">
     	<div class="row justify-content-center">
         	<div class="col-xl-6 col-lg-7 col-md-9 text-center">
             	<div class="heading_s1 animation text-center" data-animation="fadeInUp" data-animation-delay="0.02s">
-                	<h2>Awesome Services</h2>
+                	<h2>Skills</h2>
                 </div>
-                 <p class="animation" data-animation="fadeInUp" data-animation-delay="0.03s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
             </div>
         </div>
         <div class="row animation" data-animation="fadeInUp" data-animation-delay="0.04s">
-        	<div class="col-lg-4 col-sm-6 text-center">
-            	<div class="icon_box icon_box_style_1">
-                    <div class="box_icon mb-3">	
-                        <i class="ti-image"></i>
-                    </div>
-                    <div class="icon_box_content">
-                        <h5>Graphic Design</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
-                    </div>
-                </div>
-            </div>
+        	{% for skill in skills %}
             <div class="col-lg-4 col-sm-6 text-center">
-            	<div class="icon_box icon_box_style_1">
-                    <div class="box_icon mb-3">	
-                        <i class="ti-video-camera"></i>
+                <div class="icon_box icon_box_style_1">
+                    <div class="box_icon mb-3">
+                        <img src="{{media_url}}{{skill.skill_icon_picture}}" alt="MATLAB" width="70" height="70">
                     </div>
                     <div class="icon_box_content">
-                        <h5>Digital Marketing</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
+                        <h5>{{skill.skill_name}}</h5>
+                        <p>{{skill.skill_description}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 text-center">
-            	<div class="icon_box icon_box_style_1">
-                    <div class="box_icon mb-3">	
-                        <i class="ti-crown"></i>
-                    </div>
-                    <div class="icon_box_content">
-                        <h5>Branding</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
-                    </div>
-                 </div>
-            </div>
-        	<div class="col-lg-4 col-sm-6 text-center">
-            	<div class="icon_box icon_box_style_1">
-                    <div class="box_icon mb-3">	
-                        <i class="ti-light-bulb"></i>
-                    </div>
-                    <div class="icon_box_content">
-                        <h5>Development</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 text-center">
-            	<div class="icon_box icon_box_style_1">
-                    <div class="box_icon mb-3">	
-                        <i class="ti-mobile"></i>
-                    </div>
-                    <div class="icon_box_content">
-                        <h5>Mobile Application</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 text-center">
-            	<div class="icon_box icon_box_style_1">
-                    <div class="box_icon mb-3">	
-						<i class="ti-camera"></i>
-                    </div>
-                    <div class="icon_box_content">
-                        <h5>Photography</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            
         </div>
     </div>
 </section>
