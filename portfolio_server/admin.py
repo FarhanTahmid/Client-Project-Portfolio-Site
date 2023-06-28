@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserResearchExperience,UserSkills,SocialUrls,UserInformations,WavingLines,UserEducation
+from .models import PublicationType,UserPublications,UserResearchExperience,UserSkills,SocialUrls,UserInformations,WavingLines,UserEducation
 
 # Register your models here.
 
@@ -36,4 +36,15 @@ class UserSkills(admin.ModelAdmin):
 class UserResearchExp(admin.ModelAdmin):
     list_display=[
         'pk','research_institute','research_project'
+    ]
+@admin.register(PublicationType)
+class PublicationType(admin.ModelAdmin):
+    list_display=[
+        'pk','publication_type'
+    ]
+
+@admin.register(UserPublications)
+class UserPublications(admin.ModelAdmin):
+    list_display=[
+        'pk','publication_type','publication_title'
     ]

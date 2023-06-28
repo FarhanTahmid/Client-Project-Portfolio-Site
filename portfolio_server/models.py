@@ -92,7 +92,29 @@ class UserResearchExperience(models.Model):
     def get_absolute_url(self):
         return reverse("research_experience", kwargs={"pk": self.pk})
 
-        
+class PublicationType(models.Model):
+    publication_type=models.CharField(null=False,blank=False,max_length=100)
+    
+    class Meta:
+        verbose_name="Publication Type"
+    def __str__(self) -> str:
+        return self.publication_type
+
+class UserPublications(models.Model):
+    user=models.ForeignKey(UserInformations,on_delete=models.CASCADE,null=False)
+    publication_type=models.ForeignKey(PublicationType,on_delete=models.CASCADE,null=False)
+    publication_title=models.CharField(null=False,max_length=200)
+    publication_in=models.CharField(null=False,max_length=200)
+    publishers_name=models.CharField(null=True,max_length=500)
+    citation_link=models.CharField(null=True,max_length=200)
+    
+    class Meta:
+        verbose_name="User Publication"
+    def __str__(self) -> str:
+        return str(self.pk)
+    def get_absolute_url(self):
+        return reverse("publications", kwargs={"pk": self.pk})
+    
         
 class WavingLines(models.Model):
     user=models.ForeignKey(UserInformations,on_delete=models.CASCADE)
