@@ -128,8 +128,22 @@ class UserDistinctions(models.Model):
     def __str__(self):
         return str(self.pk)
     def get_absolute_url(self):
-        return reverse("distinction", kwargs={"pk": self.pk})    
-        
+        return reverse("distinction", kwargs={"pk": self.pk})
+
+class UserVolunteeringExperiences(models.Model):
+    user=models.ForeignKey(UserInformations,on_delete=models.CASCADE)
+    designation_and_organization=models.CharField(null=False,max_length=100)
+    duration=models.CharField(null=False,max_length=50)
+    description=models.TextField(null=True,max_length=1000)
+    
+    class Meta:
+        verbose_name="User Volunteering Experience"
+    
+    def __str__(self) -> str:
+        return str(self.pk)
+    def get_absolute_url(self):
+        return reverse("volunteering", kwargs={"pk": self.pk})
+    
 class WavingLines(models.Model):
     user=models.ForeignKey(UserInformations,on_delete=models.CASCADE)
     line=models.CharField(null=False,blank=False,max_length=100)

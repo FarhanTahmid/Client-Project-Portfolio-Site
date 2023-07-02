@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserDistinctions,PublicationType,UserPublications,UserResearchExperience,UserSkills,SocialUrls,UserInformations,WavingLines,UserEducation
+from .models import UserVolunteeringExperiences,UserDistinctions,PublicationType,UserPublications,UserResearchExperience,UserSkills,SocialUrls,UserInformations,WavingLines,UserEducation
 
 # Register your models here.
 
@@ -52,4 +52,10 @@ class UserPublications(admin.ModelAdmin):
 class UserDistinctions(admin.ModelAdmin):
     list_display=[
         'pk','distinction_title'
+    ]
+
+@admin.register(UserVolunteeringExperiences)
+class VolunteeringExperience(admin.ModelAdmin):
+    list_display=[
+        'pk','designation_and_organization','duration'
     ]

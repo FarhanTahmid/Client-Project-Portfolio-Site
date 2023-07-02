@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import UserDistinctions,UserPublications,PublicationType,UserResearchExperience,UserSkills,SocialUrls,WavingLines,UserEducation,UserInformations
+from . models import UserVolunteeringExperiences,UserDistinctions,UserPublications,PublicationType,UserResearchExperience,UserSkills,SocialUrls,WavingLines,UserEducation,UserInformations
 from django.conf import settings
 
 # Create your views here.
@@ -26,7 +26,8 @@ def portfolio_page(request):
     
     distinctions=UserDistinctions.objects.filter(user=UserInformations.objects.get(pk=user_id)).values().order_by('-pk')
 
-    
+    volunteering_experience=UserVolunteeringExperiences.objects.filter(user=UserInformations.objects.get(pk=user_id)).values().order_by('pk')
+
     context={
         'user':user,
         'wavingTags':wavingTags,
@@ -43,5 +44,6 @@ def portfolio_page(request):
         'journal_pub_count':journal_publications.count(),
         'total_pub_count':total_publication_count,
         'distinctions':distinctions,
+        'volunteerings':volunteering_experience,
     }
     return render(request,'index-2.html',context=context)
