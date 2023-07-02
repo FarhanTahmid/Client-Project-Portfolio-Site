@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from . models import UserVolunteeringExperiences,UserDistinctions,UserPublications,PublicationType,UserResearchExperience,UserSkills,SocialUrls,WavingLines,UserEducation,UserInformations
+from . import email_handler
 from django.conf import settings
+from django.contrib import messages
+from django.shortcuts import render, HttpResponseRedirect
 
 # Create your views here.
 
@@ -28,6 +31,19 @@ def portfolio_page(request):
 
     volunteering_experience=UserVolunteeringExperiences.objects.filter(user=UserInformations.objects.get(pk=user_id)).values().order_by('pk')
 
+    if(request.method=="POST"):
+        
+        name=request.POST['name']
+        email=request.POST['email']
+        subject=request.POST['subject']
+        message=request.POST['message']
+        
+        mail_to_owner=email_handler.sendEmailToOwner(name=name,recipentMail=user.email,email=email,email_subject=subject,message=message)
+        
+        if(mail_to_owner):
+            messages.success(request,'Your message has been sent successfully')
+            return HttpResponseRedirect(request.path+'#contact')
+        
     context={
         'user':user,
         'wavingTags':wavingTags,
