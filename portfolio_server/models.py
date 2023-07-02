@@ -17,7 +17,7 @@ class UserInformations(models.Model):
     address=models.CharField(null=True,blank=True,max_length=100)
     phone=models.CharField(null=True,blank=True,max_length=40)
     nationality=models.CharField(null=True,blank=True,max_length=40)
-    
+    location_maps=models.TextField(null=True,max_length=1500)
     
     class Meta:
         verbose_name = "User Detail"
